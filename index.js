@@ -1,10 +1,16 @@
 /*jslint node: true */
 var util = require('util');
 
-/** standard util has an _extend method, but it doesn't handle an undefined
+/** util.extend(target, ...sources)
+
+Extend target with each object in sources, returning target. If target is
+undefined, create a blank object. Later objects in sources overwrite keys
+in prior sources or target.
+
+The standard util has an _extend method, but it doesn't handle an undefined
 target, nor does it allow multiple sources.
 */
-util.extend = function(target /*, sources... */) {
+util.extend = function(target /*, ...sources */) {
   if (target === undefined) target = {};
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
@@ -17,8 +23,10 @@ util.extend = function(target /*, sources... */) {
   return target;
 };
 
-/** pushAll: use Array#push method, but unpack a single input array
-into multiple arguments via Function.apply, rather than Function.call.
+/** util.pushAll(target, items)
+
+Calls Array#push with Function.apply to unpack a single input array into
+multiple arguments.
 
 @param {Array} target: the array to extend with new items
 @param {Array} items: array of new items
@@ -32,15 +40,19 @@ util.pushAll = function(target, items) {
   return Array.prototype.push.apply(target, items);
 };
 
-/** flatten: use Array#concat and unpack the given array into a bunch of
-arrays, sending them all into a newly created array. Not recursive.
+/** util.flatten(arrays)
+
+Uses Array#concat with Function.apply to unpack the given array into a bunch
+of arrays, combining them all into a newly created array. Not recursive.
 */
 util.flatten = function(arrays) {
   return Array.prototype.concat.apply([], arrays);
 };
 
-/** clone: deep-copy a plain object or array. There is no special handling for other
-types of objects; it simply clones the reference.
+/** util.clone(obj)
+
+Deep-copy a plain object or array. There is no special handling for other
+types of objects; it simply copies everything else by reference.
 */
 util.clone = function(obj) {
   if (util.isArray(obj)) {
@@ -60,7 +72,19 @@ util.clone = function(obj) {
   }
 };
 
-/** toString: Expose standard util's objectToString internal function.
+/** util.toString(obj)
+
+Expose the standard util's objectToString internal function. Simply calls
+Object.prototype.toString.call(obj).
+
+    util.toString(null) #=> '[object Null]'
+    util.toString(undefined) #=> '[object Undefined]'
+    util.toString([1, 2, 3]) #=> '[object Array]'
+    util.toString({name: 'Chris'}) #=> '[object Object]'
+    util.toString(new Date()) #=> '[object Date]'
+    util.toString(100) #=> '[object Number]'
+    util.toString(true) #=> '[object Boolean]'
+
 */
 util.toString = function(obj) {
   return Object.prototype.toString.call(obj);
