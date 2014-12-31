@@ -1,0 +1,14 @@
+{
+  "name": "util-enhanced",
+  "version": "0.1.0",
+  "description": "Drop-in replacement for Node.js standard `util` API with various extensions",
+  "keywords": ["util", "enhanced"],
+  "homepage": "http://github.com/chbrown/util-enhanced",
+  "bugs": "http://github.com/chbrown/util-enhanced/issues",
+  "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chbrown/util-enhanced.git"
+  }
+}
