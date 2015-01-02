@@ -58,6 +58,7 @@ Object.prototype.toString.call(obj).
     util.toString(new Date()) #=> '[object Date]'
     util.toString(100) #=> '[object Number]'
     util.toString(true) #=> '[object Boolean]'
+    util.toString(JSON.parse) #=> '[object Function]'
 
 
 ## License
