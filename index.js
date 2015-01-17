@@ -55,7 +55,11 @@ Deep-copy a plain object or array. There is no special handling for other
 types of objects; it simply copies everything else by reference.
 */
 util.clone = function(obj) {
-  if (util.isArray(obj)) {
+  // typeof null == 'object' (wat), so we check for that case early.
+  if (obj === null) {
+    return obj;
+  }
+  else if (util.isArray(obj)) {
     return obj.map(util.clone);
   }
   else if (typeof obj === 'object') {
@@ -68,6 +72,8 @@ util.clone = function(obj) {
     return copy;
   }
   else {
+    // typeof undefined == 'undefined', so that will pass through here,
+    // along with strings, numbers, true, and false.
     return obj;
   }
 };
