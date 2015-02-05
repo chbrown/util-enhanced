@@ -62,6 +62,10 @@ util.clone = function(obj) {
   else if (util.isArray(obj)) {
     return obj.map(util.clone);
   }
+  // typeof new Date() == 'object', so we check for that case too.
+  else if (obj instanceof Date) {
+    return new Date(obj);
+  }
   else if (typeof obj === 'object') {
     var copy = {};
     for (var key in obj) {
