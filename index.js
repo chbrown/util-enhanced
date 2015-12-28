@@ -1,4 +1,3 @@
-/*jslint node: true */
 var util = require('util');
 
 /** util.extend(target, ...sources)
@@ -21,32 +20,6 @@ util.extend = function(target /*, ...sources */) {
     }
   }
   return target;
-};
-
-/** util.pushAll(target, items)
-
-Calls Array#push with Function.apply to unpack a single input array into
-multiple arguments.
-
-@param {Array} target: the array to extend with new items
-@param {Array} items: array of new items
-
-Similar to:
-
-    target = target.concat(items);
-
-*/
-util.pushAll = function(target, items) {
-  return Array.prototype.push.apply(target, items);
-};
-
-/** util.flatten(arrays)
-
-Uses Array#concat with Function.apply to unpack the given array into a bunch
-of arrays, combining them all into a newly created array. Not recursive.
-*/
-util.flatten = function(arrays) {
-  return Array.prototype.concat.apply([], arrays);
 };
 
 /** util.clone(obj)
