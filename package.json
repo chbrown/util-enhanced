@@ -6,12 +6,9 @@
     "util",
     "enhanced"
   ],
-  "homepage": "http://github.com/chbrown/util-enhanced",
-  "bugs": "http://github.com/chbrown/util-enhanced/issues",
-  "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
+  "homepage": "https://github.com/chbrown/util-enhanced",
+  "bugs": "https://github.com/chbrown/util-enhanced/issues",
+  "author": "Christopher Brown <io@henrian.com>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/chbrown/util-enhanced.git"
-  }
+  "repository": "git://github.com/chbrown/util-enhanced.git"
 }
